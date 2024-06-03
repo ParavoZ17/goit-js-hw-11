@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Goit-js-hw-11</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
-  <body>
-    <div class="section_search">
-      <form  class="">
-        <input
-          type="text"
-          name="search_images"
-          placeholder="Search images..."
-        />
-        <button type="submit" class="submit_btn">Search</button>
-      </form>
-      <p>Loading images, please wait...</p>
-    </div>
-    <div class="container">
-      <ul class="gallery"></ul>
-    </div>
-    <script src="./main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanilla App Template</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+<div class="formBox">
+  <form class="searchForm">
+    <input class="inputSearch" type="text" name="text"
+           placeholder="Search images..." />
+    <input class="submitBtn" type="submit" value="Search" />
+  </form>
+</div>
+<div class="container gallery"></div>
+<script type="module" src="./main.js"></script>
+</body>
 </html>
