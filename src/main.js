@@ -1,7 +1,7 @@
 import 'izitoast/dist/css/iziToast.min.css';
 import iziToast from 'izitoast';
-import "simplelightbox/dist/simple-lightbox.min.css";
-import SimpleLightbox from "simplelightbox";
+import 'simplelightbox/dist/simple-lightbox.min.css';
+import SimpleLightbox from 'simplelightbox';
 import pixabayApi from './js/pixabay-api.js';
 import render from './js/render-function.js';
 
@@ -18,10 +18,16 @@ const showError = (message) => {
     message: message,
   });
 };
+let text = '';
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  captionPosition: 'bottom',
+});
 
 searchForm.addEventListener('submit', event => {
   event.preventDefault();
-  const text = input.value;
+  text = input.value;
 
   if (text === '') return showError(SEARCH_TEXT_ERR);
 
@@ -38,14 +44,8 @@ searchForm.addEventListener('submit', event => {
       container.innerHTML = '';
       container.append(...items);
 
-      const lightbox = new SimpleLightbox('.gallery a', {
-        captionsData: 'alt',
-        captionDelay: 250,
-        captionPosition: 'bottom',
-      });
-
+      lightbox.refresh();
       lightbox.next();
-
     })
     .catch(err => console.log(err));
 });
