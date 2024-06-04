@@ -29,7 +29,7 @@ searchForm.addEventListener('submit', event => {
   event.preventDefault();
   text = input.value;
 
-  if (text === '') return showError(SEARCH_TEXT_ERR);
+  if (text === '') return showError(SEARCH_TEXT_ERR); 
 
   container.innerHTML = '';
   container.append(loader);
@@ -38,14 +38,20 @@ searchForm.addEventListener('submit', event => {
     .then(data => {
       const { hits } = data;
 
-      if (hits.length === 0) return showError(NO_IMAGES_ERR);
+      if (hits.length === 0) {
+        container.innerHTML = '';
+        return showError(NO_IMAGES_ERR);
+      }
 
       const items = hits.map(img => render.createImgCard(img));
       container.innerHTML = '';
       container.append(...items);
 
       lightbox.refresh();
-      lightbox.next();
+      // lightbox.next();
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      showError('Sorry there was an error')
+    });
 });
